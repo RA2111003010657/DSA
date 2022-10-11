@@ -1,0 +1,11 @@
+// C program to traverse the array
+#include <stdio.h>  
+void main()
+{
+    int i, size;
+    int arr[]={1, -9, 17, 4, -3};     //declaring and initializing array
+    size=sizeof(arr)/sizeof(arr[0]);     //sizeof(arr) will give 20 and sizeof(arr[0]) will give 4
+    printf("The array elements are: ");
+    for(i=0;i<size;i++)
+        printf("\narr[%d]= %d", i, arr[i]);
+}
