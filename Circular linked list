@@ -1,0 +1,83 @@
+#include <stdio.h>
+#include <stdlib.h>
+#define TRUE 1
+#define FALSE 2
+
+typedef struct node {
+int data;
+struct node* next;
+}node;
+
+node* get_node(){
+node* newNode = (node*)malloc(sizeof(node));
+newNode->next = NULL;
+return newNode;
+}
+
+node* create(node *head){
+node *temp , *New;
+int val, flag = TRUE;
+char ans = 'y';
+do{
+printf("\nEnter the element : \n");
+scanf("%d", &val);
+
+if(head==NULL)
+{
+
+// Creating a node dynamically.
+temp =get_node();
+
+// Assigning the data.
+temp -> data = val;
+head = temp;
+
+// Creating the link.
+head -> next = head;
+}
+else{
+
+temp =get_node();
+
+temp -> data = val;
+temp -> next = head -> next;
+head -> next = temp;
+}
+
+printf("You want to add more element(y/n) : ");
+scanf("%s", &ans);
+}while(ans == 'y' || ans == 'Y');
+return head;
+}
+
+void display(node* head){
+
+struct node *p;
+
+// If list is empty, return.
+if (head == NULL)
+{
+printf("List is empty.\n");
+return;
+}
+
+// Pointing to first Node of the list.
+p = head-> next;
+
+// Traversing the list.
+do
+{
+printf("%d ", p -> data);
+p = p -> next;
+
+}
+while(p != head->next);
+}
+
+int main(){
+node *head=NULL;
+head = create(head);
+display(head);
+
+return 0;
+}
